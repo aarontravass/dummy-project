@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html" charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/6.6.0/math.min.js"></script>
+        <script type="text/javascript" src="js/chart.bundle.js"></script>
+        <link href="css/chart.css" rel="stylesheet">
+        <title>Request Page</title>
+        <script>
+            $(document).ready(function(){
+            $.ajax({
+                url: "data.php",
+                method: "POST",
+                success: function(data) {
+                
+                data=JSON.parse(data);
+                console.log(data);
+                var coords = [];
+                var count = [];
+
+                for(var i in data) {
+                    coords.push(data[i].x);
+                    count.push(data[i].y);
+                }
+
+                var chartdata = {
+                    labels: coords,
+                    datasets : [
+                    {
+                        label: 'No of Co-ordinates',
+                        backgroundColor: 'rgba(00, 100, 20, 0.75)',
+                        borderColor: 'rgba(200, 200, 200, 0.75)',
+                        hoverBackgroundColor: 'rgba(200, 200, 200, 1)',
+                        hoverBorderColor: 'rgba(200, 200, 200, 1)',
+                        data: count
+                    }
+                    ]
+                };
+
+                var ctx = $("#mycanvas2");
+
+                var barGraph = new Chart(ctx, {
+                    type: 'bar',
+                    data: chartdata
+                });
+                },
+                error: function(data) {
+                console.log(data);
+                }
+            });
+            });
+
+        </script>
+        
+    </head>
+    <body>
+        
+        
+      <canvas id="mycanvas2"></canvas>
+    
+
+        
+    
+        </body>
+</html>
