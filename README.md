@@ -7,6 +7,8 @@ Credits:
 4) Data Mining - Jayashree Patil(https://github.com/JAYASHREEPATIL), Prachi Nimkar(https://github.com/prachinimkar1) & Aaron Travasso(Me)
 
 
+
+
 Technology Stack:
 1) Php, JavaScript, Bootstrap, Ajax, Chart.js
 2) Google BigTable
